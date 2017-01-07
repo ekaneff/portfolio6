@@ -1,0 +1,178 @@
+/* ======================
+		HEADER
+   ====================== */
+body {
+	color: #252323;
+}
+
+header {
+	background: url("../assets/header.jpg");
+	background-position: center;
+	background-size: cover;
+	padding: 10px;
+	height: 650px;
+}
+
+header::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+header h2 {
+	margin-left: 30px;
+	padding-top: 240px;
+	padding-bottom: 60px;
+	color: #12355B;
+}
+
+header div {
+	width: 500px;
+	float: left;
+	margin-left: 40px;
+}
+
+header div a {
+	padding: 10px 20px;
+	color: #F2F4F3;
+	/*background: rgba(242, 244, 243, .1);*/
+	background: rgba(168, 41, 49, .9);
+	margin: 10px;
+	border: 3px solid #A82931;
+	font-size: 20px;
+	transition: .3s;
+}
+
+header div a:hover {
+	text-decoration: none;
+	color: #A82931;
+	background: rgba(242, 244, 243, .5);
+	border: 3px solid #F2F4F3;
+}
+
+
+/* ======================
+		NAVIGATION
+   ====================== */
+nav::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+nav {
+	color: #12355B;
+}
+
+nav ul {
+	width: 400px;
+	float: right;
+	list-style: none;
+	padding-left: 100px;
+	margin-bottom: 0;
+}
+
+nav ul::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+nav li {
+	float: left;
+	padding: 10px 20px 10px 20px;
+}
+
+nav h1 {
+	margin: 0;
+	width: 400px;
+	float: left;
+	margin-left: 40px;
+	margin-bottom: 5px;
+}
+
+nav a {
+	color: #12355B;
+}
+
+
+/* ======================
+		FEATURED
+   ====================== */
+
+.container {
+}
+
+.thumbnail {
+	border-radius: 0px;
+	border-color: #252323;
+}
+
+.thumbnail img {
+	max-height: 350px;
+	max-width: 300px;
+}
+
+h3 a {
+	color: #A82931;
+}
+
+h3 a:hover {
+	color: #A82931;
+}
+
+.btn-default {
+	border-radius: 0px;
+	background: #A82931;
+	color: #F2F4F3;
+	transition: .3s;
+	border: 2px solid #A82931;
+}
+
+.btn-default:hover {
+	color: #A82931;
+	border: 2px solid #A82931;
+	background: #F2F4F3;
+}
+
+#featured h1 {
+	color: #12355B;
+	margin-left: 40px;
+	margin-right: 40px;
+	padding-bottom: 5px;
+	border-bottom: 3px solid #12355B;
+}
+
+.wishlist {
+	margin-right: 5px;
+	padding: 10px 12px;
+}
+
+.price {
+	font-weight: bold;
+	font-size: 20px;
+	padding-top: 5px;
+	color: #12355B;
+}
+
+.desc {
+	color: #77878B;
+}
+
+/* ======================
+		FOOTER
+   ====================== */
+
+footer {
+	padding: 40px 0;
+	background: #77878B;
+}
+
+footer div {
+	text-align: center;
+	color: #F2F4F3;
+	font-size: 16px;
+}
+
+
+
