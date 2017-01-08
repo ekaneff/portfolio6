@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('shop.index');
 });
 
-Auth::routes();
+Route::get('/signup', function() {
+	return view('user.signup');
+});
+
+Route::get('/login', function() {
+	return view('user.login');
+});
+
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index');

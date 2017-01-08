@@ -91,6 +91,11 @@ nav h1 {
 	margin-bottom: 5px;
 }
 
+nav h1 a:hover {
+	text-decoration: none;
+
+}
+
 nav a {
 	color: #12355B;
 }
@@ -174,5 +179,14 @@ footer div {
 	font-size: 16px;
 }
 
+/* ======================
+		Sign up
+   ====================== */
+.signup {
+	text-align: center;
+}
 
+.login {
+	text-align: center;
+}
 

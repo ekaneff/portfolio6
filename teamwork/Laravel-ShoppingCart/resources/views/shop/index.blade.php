@@ -3,7 +3,8 @@
 @section('title')
 	Bike Shop
 @endsection
-
+@include('partials.nav')
+@include('partials.header')
 @section('content')
 <section id="featured">
 	<h1>Today's Featured</h1>
@@ -11,7 +12,7 @@
 		<div class="row">
 		  <div class="col-sm-6 col-md-4">
 		    <div class="thumbnail">
-		      <img src="{{ URL::to('src/assets/bike1.jpeg') }}" alt="...">
+		      <img src="{{ URL::to('src/assets/bike1.jpeg') }}" class="img-responsive" alt="...">
 		      <div class="caption">
 		        <h3><a href="#">Product Name</a></h3>
 		        <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
