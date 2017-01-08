@@ -15,6 +15,7 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             //Define table columns here
+            $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name');
             $table->mediumText('description');
