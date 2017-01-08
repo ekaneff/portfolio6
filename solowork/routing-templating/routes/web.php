@@ -12,21 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('shop.index');
+    return view('mainpage.index');
 });
 
-Route::get('/signup', function() {
-	return view('user.signup');
+Route::get('/one', function () {
+    return view('mainpage.one');
 });
 
-Route::get('/login', function() {
-	return view('user.login');
+Route::get('/two', function () {
+    return view('mainpage.two');
 });
 
-Route::get('/cart', function() {
-	return view('shop.cart');
+Route::get('/three', function () {
+    return view('mainpage.three');
 });
 
-// Auth::routes();
+Route::get('/four', 'MainController@index');
 
-Route::get('/home', 'HomeController@index');
