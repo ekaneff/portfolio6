@@ -14,18 +14,20 @@
 Route::get('/', function () {
     return view('shop.index');
 });
-
-Route::get('/signup', function() {
+ 
+Route::get('/signup', ['middleware' => 'guest'] ,function() {
 	return view('user.signup');
 });
 
-Route::get('/login', function() {
+Route::get('/login', ['middleware' => 'guest'] ,function() {
 	return view('user.login');
 });
 
-Route::get('/cart', function() {
+Route::get('/cart',function() {
 	return view('shop.cart');
 });
+
+Route::get('/orders', ['uses' => 'HomeController@index', 'middleware' => 'auth']);
 
 // Auth::routes();
 
