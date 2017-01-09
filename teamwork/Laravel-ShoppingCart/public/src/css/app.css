@@ -194,3 +194,39 @@ footer div {
 	text-align: center;
 }
 
+/* ======================
+		Confirmation
+   ====================== */
+
+.orderpage {
+	text-align: center;
+	height: 550px;
+	color: #12355B;
+	border-top: 2px solid #12355B;
+}
+
+.order {
+	width: 70%;
+	margin: 0 auto;
+	padding: 20px;
+	background: #eee;
+	border-top: 2px solid #ccc;
+	text-align: left;
+}
+
+.order h2 {
+	text-align: right;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.total {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+
+
+
+
