@@ -24,10 +24,6 @@ Route::get('/login', ['middleware' => 'guest'] ,function() {
 	return view('user.login');
 });
 
-Route::get('/cart',function() {
-	return view('shop.cart');
-});
-
 Route::get('/orders', ['uses' => 'HomeController@index', 'middleware' => 'auth']);
 
 // Auth::routes();
@@ -37,3 +33,19 @@ Route::get('/home', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'cart'], function () {
+
+	Route::get('/', 'CartController@index');
+
+    Route::post('add', 'CartController@add');
+
+    Route::get('remove', function(){
+
+    });
+
+    Route::get('update', function(){
+
+    });
+
+});

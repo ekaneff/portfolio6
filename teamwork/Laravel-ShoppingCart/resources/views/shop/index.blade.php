@@ -20,8 +20,12 @@
 				        <p class="desc">{{ $product->description }}</p>
 				        <div class="clearfix">
 				        	<div class="pull-left price">${{ $product->price }}.00</div>
-					        <a href="#" class="btn btn-default pull-right" role="button">Add to Cart</a>
-					        <a href="#" class="pull-right wishlist" role="button">Add to WishList</a>
+				        	<form action="/cart/add" method="post">
+					        	<!-- <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> -->
+					        	<input type="hidden" name="item" value="{{ $product->id }}">
+					        	<input type="submit" name="submit" value="Add to Cart" class="btn btn-default pull-right">					        
+					        </form>
+					        <a href="" class="pull-right wishlist" role="button">Add to WishList</a>
 				        </div>
 				      </div>
 				    </div>
