@@ -15,6 +15,7 @@ class CreateWishlistTable extends Migration
     {
         Schema::create('wishlist', function (Blueprint $table) {
             $table->engine = 'InnoDB';
+            
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('product_id')->unsigned();

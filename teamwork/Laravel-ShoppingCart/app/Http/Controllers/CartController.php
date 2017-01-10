@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Orders;
+use App\Products;
 
 class CartController extends Controller
 {
@@ -13,14 +14,11 @@ class CartController extends Controller
      *
      * @return void
      */
-    protected $id;
     // protected $guestCart;
 
     public function __construct()
     {
         $this->middleware('auth');
-
-        $this->id = Auth::id();
     }
 
     /**
@@ -32,13 +30,30 @@ class CartController extends Controller
     {
         if(Auth::check())
         {
-            $cart = Orders::where([['user_id', '=', $this->id],['complete', '=', false]])->get();
+            //Capture user ID for order lookup
+            $id = Auth::id();
 
-            dd($cart);
+            //Find current users active orders
+            $orders = Orders::where([['complete', '=', false], ['user_id', '=', $id]])->get();
+
+            //Array to store data for transfer to view
+            $products = array();
+
+            //Laravel arrays accept key/value pairs, count will act as a generic iterator for our 'keys'
+            $count = 0;
+
+            foreach($orders as $item)
+            {
+                $item = Products::where([['id', '=', $item->product_id]])->get();
+                
+                $products = array_add($products, $count, $item[0]['attributes']);
+
+                $count++;
+            }
         }
-
         
-        // return view('shop.cart', ['items' => $cart]);
+        //I'm sending product references for images and price, along with the orders to display.
+        return view('shop.cart', ['products' => $products, 'order' => $orders]);
     }
 
     public function add($id)

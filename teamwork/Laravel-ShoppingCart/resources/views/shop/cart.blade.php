@@ -8,9 +8,13 @@
 
 <h1>My Cart</h1>
 <ul>
-	@if(count($items) > 0)
-		@foreach ($items as $item)
-	    	<li>{{ $item->name }}</li>
+	@if (count($order) > 0)
+		@foreach ($order as $item)
+			@for ($i = 0; $i < count($products); $i++)
+				<ul>
+					<li>{{ $products[$i]['name'] }}</li>
+				</ul>
+			@endfor  
 		@endforeach
 	@else
 		<li>Your cart is empty</li>

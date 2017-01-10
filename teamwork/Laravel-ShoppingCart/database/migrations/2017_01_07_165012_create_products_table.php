@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->mediumText('description');
             $table->integer('price');
+            //inStock should be changed to 'quantity' so model can be referenced for 'inventory management' and 'shopping cart'
             $table->integer('inStock');
             $table->string('imgPath');
 
