@@ -24,8 +24,7 @@ Route::get('/login', ['middleware' => 'guest'] ,function() {
 	return view('user.login');
 });
 
-<<<<<<< HEAD
-=======
+
 Route::get('/cart',function() {
 	return view('shop.cart');
 });
@@ -34,7 +33,6 @@ Route::get('/confirm', function() {
 	return view('shop.confirmation');
 });
 
->>>>>>> origin/master
 Route::get('/orders', ['uses' => 'HomeController@index', 'middleware' => 'auth']);
 
 // // Auth::routes();
@@ -43,7 +41,7 @@ Route::get('/orders', ['uses' => 'HomeController@index', 'middleware' => 'auth']
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+// Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'cart'], function () {
 

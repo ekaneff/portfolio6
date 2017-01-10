@@ -34,11 +34,10 @@ class CartController extends Controller
         {
             $cart = Orders::where([['user_id', '=', $this->id],['complete', '=', false]])->get();
 
-            dd($cart);
+            // dd($cart);
+            return view('shop.cart', ['items' => $cart]);
         }
 
-        
-        // return view('shop.cart', ['items' => $cart]);
     }
 
     public function add($id)

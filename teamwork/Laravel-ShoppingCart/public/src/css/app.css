@@ -154,7 +154,7 @@ h3 a:hover {
 
 .wishlist {
 	margin-right: 5px;
-	padding: 10px 12px;
+	padding: 5px 12px;
 }
 
 .price {
@@ -225,7 +225,21 @@ footer div {
 	font-size: 20px;
 }
 
+/* ======================
+		Confirmation
+   ====================== */
 
+.cart {
+	color: #12355B;
+	margin: 0 auto;
+	border: 2px solid #12355B;
+	margin-bottom: 450px;
+	padding: 20px;
+}
+
+.cart h2 {
+	text-align: center;
+}
 
 
 
