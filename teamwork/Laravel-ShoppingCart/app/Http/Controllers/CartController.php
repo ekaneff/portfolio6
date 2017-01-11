@@ -41,6 +41,9 @@ class CartController extends Controller
             //Array to store data for transfer to view
             $products = array();
 
+            //Array to store quantities
+            $quantities = array();
+
             //Laravel arrays accept key/value pairs, count will act as a generic iterator for our 'keys'
             $count = 0;
 
@@ -50,12 +53,14 @@ class CartController extends Controller
                 
                 $products = array_add($products, $count, $itemA[0]['attributes']);
 
+                $quantities = array_add($quantities, $count, $item['attributes']['quantity']);
+
                 $count++;
             }
         }
         
         //I'm sending product references for images and price, along with the orders to display.
-        return view('shop.cart', ['products' => $products, 'order' => $orders]);
+        return view('shop.cart', ['products' => $products, 'order' => $orders, 'quantities' => $quantities]);
     }
 
     public function add()

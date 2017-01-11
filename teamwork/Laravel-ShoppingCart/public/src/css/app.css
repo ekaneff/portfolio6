@@ -237,8 +237,9 @@ footer div {
 	padding: 20px;
 }
 
-.cart h2 {
+.cart-head {
 	text-align: center;
+	color: #12355B;
 }
 
 

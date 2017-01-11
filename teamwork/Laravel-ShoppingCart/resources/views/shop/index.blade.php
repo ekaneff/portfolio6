@@ -20,7 +20,7 @@
 				        <p class="desc">{{ $product->description }}</p>
 				        <div class="clearfix">
 				        	<div class="pull-left price">${{ $product->price }}.00</div>
-				        	<form action="/cart/add" method="post">
+				        	<form action="/cart/add" method="post" pull-right>
 					        	<!-- <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> -->
 					        	{{ csrf_field() }}
 					        	<input type="hidden" name="item" value="{{ $product->id }}">
