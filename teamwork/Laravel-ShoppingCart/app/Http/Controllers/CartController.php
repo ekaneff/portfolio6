@@ -33,7 +33,7 @@ class CartController extends Controller
             //Capture user ID for order lookup
             $id = Auth::id();
 
-<<<<<<< HEAD
+
             //Find current users active orders
             $orders = Orders::where([['complete', '=', false], ['user_id', '=', $id]])->get();
 
@@ -45,9 +45,9 @@ class CartController extends Controller
 
             foreach($orders as $item)
             {
-                $item = Products::where([['id', '=', $item->product_id]])->get();
+                $itemA = Products::where([['id', '=', $item->product_id]])->get();
                 
-                $products = array_add($products, $count, $item[0]['attributes']);
+                $products = array_add($products, $count, $itemA[0]['attributes']);
 
                 $count++;
             }
@@ -55,12 +55,6 @@ class CartController extends Controller
         
         //I'm sending product references for images and price, along with the orders to display.
         return view('shop.cart', ['products' => $products, 'order' => $orders]);
-=======
-            // dd($cart);
-            return view('shop.cart', ['items' => $cart]);
-        }
-
->>>>>>> origin/master
     }
 
     public function add($id)

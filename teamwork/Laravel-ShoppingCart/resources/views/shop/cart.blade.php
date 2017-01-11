@@ -8,18 +8,28 @@
 
 @section('content')
 <h1>My Cart</h1>
-<<<<<<< HEAD
+
 <ul>
 	@if (count($order) > 0)
 		@foreach ($order as $item)
 			@for ($i = 0; $i < count($products); $i++)
-				<ul>
-					<li>{{ $products[$i]['name'] }}</li>
-				</ul>
+					<li>
+					{{ $products[$i]['imgPath'] }}
+					{{ $products[$i]['name'] }}
+					{{ $products[$i]['price'] }}
+					{{ $item['quantity'] }}
+					{{-- Build your card here--}}
+					</li>
 			@endfor  
-=======
-<div class="container cart">
-	{{-- <ul>
+		@endforeach
+	@else
+		<h2>Your cart is empty!</h2>
+		<h3>It doesn't have to stay that way! Click below to keep shopping</h3>
+		<a href="{{ route('product.index') }}" class="btn btn-default" role="button">Continue Shopping</a>
+	@endif
+</ul>
+{{-- <div class="container cart">
+	<ul>
 		@if(count($items) > 0)
 			@foreach ($items as $item)
 		    	<li>{{ $item->name }}</li>
@@ -28,8 +38,8 @@
 		@else
 			</ul>
 			<h2>Your cart is empty</h2>
-		@endif --}}
-	{{-- <h2>Your cart is empty</h2> --}}
+		@endif
+	<h2>Your cart is empty</h2>
 	@if(count($items) > 0)
 	@foreach($items->chunk(3) as $itemChunk)
 			<div class="row">
@@ -43,7 +53,7 @@
 				        <div class="clearfix">
 				        	<div class="pull-left price">${{ $item->price }}.00</div>
 				        	<form action="/cart/add" method="post">
-					        	<!-- <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> -->
+					        	<! <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> >
 					        	<input type="hidden" name="item" value="{{ $item->id }}">
 					        	<input type="submit" name="submit" value="Remove" class="btn btn-default pull-right">					        
 					        </form>
@@ -53,13 +63,6 @@
 				    </div>
 				</div>
 			@endforeach
-			</div> 
->>>>>>> origin/master
-		@endforeach
-	@else
-		<h2>Your cart is empty!</h2>
-		<h3>It doesn't have to stay that way! Click below to keep shopping</h3>
-		<a href="{{ route('product.index') }}" class="btn btn-default" role="button">Continue Shopping</a>
-	@endif
-</div>
-@endsection
+			</div>  --}}
+{{-- </div>
+@endsection --}}

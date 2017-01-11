@@ -24,10 +24,6 @@ Route::get('/login', ['middleware' => 'guest'] ,function() {
 	return view('user.login');
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
 Route::get('/cart',function() {
 	return view('shop.cart');
 });
