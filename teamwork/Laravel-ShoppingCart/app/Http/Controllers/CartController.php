@@ -90,4 +90,18 @@ class CartController extends Controller
             return redirect('cart');
         }
     }
+
+    public function remove()
+    {
+        if(Auth::check())
+        {
+            $id = Auth::id();
+
+            $itemId = Input::get('item');
+
+            $order = Orders::where([['user_id', '=', $id],['product_id', '=', $itemId],['complete', '=', false]]);
+
+            $order->delete();
+        }
+    }
 }

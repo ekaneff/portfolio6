@@ -16,8 +16,6 @@
 					<li>
 					{{ $products[$i]['imgPath'] }}
 					{{ $products[$i]['name'] }}
-					{{ $products[$i]['price'] }}
-					{{ $item['quantity'] }}
 					{{-- Build your card here--}}
 					</li>
 			@endfor  
