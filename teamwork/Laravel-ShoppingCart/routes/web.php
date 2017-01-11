@@ -48,12 +48,6 @@ Route::group(['prefix' => 'cart'], function () {
 
     Route::post('add', 'CartController@add');
 
-    Route::get('remove', function(){
-
-    });
-
-    Route::get('update', function(){
-
-    });
+    Route::post('remove', 'CartController@remove');
 
 });

@@ -10,6 +10,7 @@
 <h1 class="cart-head">My Cart</h1>
 <div class="container">
 	@if (count($order) > 0)
+<<<<<<< HEAD
 	<div class="row cart">
 		@for ($i = 0; $i < count($products); $i++)
 				
@@ -37,6 +38,17 @@
 				
 		@endfor 
 	</div>	
+=======
+		@foreach ($order as $item)
+			@for ($i = 0; $i < count($products); $i++)
+					<li>
+					{{ $products[$i]['imgPath'] }}
+					{{ $products[$i]['name'] }}
+					{{-- Build your card here--}}
+					</li>
+			@endfor  
+		@endforeach
+>>>>>>> dc50dd60fecd82b48902933cc3d2f2d2d6ebbf60
 	@else
 		<h2>Your cart is empty!</h2>
 		<h3>It doesn't have to stay that way! Click below to keep shopping</h3>
