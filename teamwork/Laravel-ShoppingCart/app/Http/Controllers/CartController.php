@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Orders;
 use App\Products;
@@ -57,21 +58,36 @@ class CartController extends Controller
         return view('shop.cart', ['products' => $products, 'order' => $orders]);
     }
 
-    public function add($id)
+    public function add()
     {
         if(Auth::check())
         {
-            $item = Order::where([['user_id', '=', $this->id],['product_id', '=', $id],['complete', '=', false]])->get();
 
-            if(count($item) == 1)
-            {
-                $item[0]->quantity = $item[0]->quantity + 1;
-                $item[0]->save();
-            }
-            else
-            {
+            $id = Auth::id();
 
+            $itemId = Input::get('item');
+
+            //Check database to see if order for this product already exists
+            $order = Orders::where([['user_id', '=', $id],['product_id', '=', $itemId]])->get();
+
+            //if product order exists, add another to quantity, because our functionality only allows user to add one product at a time
+            if(count($order) > 0)
+            {
+                Orders::where([['user_id', '=', $id],['product_id', '=', $itemId]])->update(['quantity' => $order[0]['attributes']['quantity'] + 1]);
+
+            } else { //else add new order to the orders database
+
+                $order = new Orders;
+
+                $order->user_id = $id;
+                $order->product_id = $itemId;
+                $order->quantity = 1;
+                $order->complete = false;
+
+                $order->save();
             }
+
+            return redirect('cart');
         }
     }
 }
