@@ -107,6 +107,8 @@ class CartController extends Controller
             $order = Orders::where([['user_id', '=', $id],['product_id', '=', $itemId],['complete', '=', false]]);
 
             $order->delete();
+
+            return redirect('cart');
         }
     }
 }

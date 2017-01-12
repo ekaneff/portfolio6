@@ -21,15 +21,20 @@ header::after {
 
 header h2 {
 	margin-left: 30px;
-	padding-top: 240px;
-	padding-bottom: 60px;
-	color: #12355B;
+	margin-top: 0;
+	padding-bottom: 40px;
 }
 
 header div {
 	width: 500px;
 	float: left;
 	margin-left: 40px;
+}
+
+header div::after {
+	content: '';
+	display: block;
+	clear: both;
 }
 
 header div a {
@@ -50,6 +55,14 @@ header div a:hover {
 	border: 3px solid #F2F4F3;
 }
 
+.head-container {
+	background: rgba(18, 53, 91, .5);
+	margin-top: 200px;
+	padding: 30px 0;
+	color: #F2F4F3;
+	border: 2px solid #F2F4F3;
+}
+
 
 /* ======================
 		NAVIGATION
@@ -62,6 +75,7 @@ nav::after {
 
 nav {
 	color: #12355B;
+	border-bottom: 2px solid #12355B;
 }
 
 nav ul {
@@ -233,13 +247,20 @@ footer div {
 	color: #12355B;
 	margin: 0 auto;
 	border: 2px solid #12355B;
-	margin-bottom: 450px;
+	margin-bottom: 100px;
 	padding: 20px;
 }
 
 .cart-head {
 	text-align: center;
 	color: #12355B;
+}
+
+.checkout {
+	margin: 10px 150px 10px 10px;
+	font-size: 30px;
+	position: absolute;
+	right: 0;
 }
 
 
