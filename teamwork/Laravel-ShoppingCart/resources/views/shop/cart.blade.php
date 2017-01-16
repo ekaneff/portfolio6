@@ -8,7 +8,7 @@
 
 @section('content')
 	<div class="container">
-		 <button class="remove btn btn-default checkout" role="button">Checkout</button>
+		 <button href="" class="remove btn btn-default checkout" role="button">Checkout</button>
 		<h1 class="cart-head">My Cart</h1>
 		@if (count($order) > 0)
 		<div class="row cart">

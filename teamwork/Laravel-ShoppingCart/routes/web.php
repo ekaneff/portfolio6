@@ -46,6 +46,8 @@ Route::group(['prefix' => 'cart'], function () {
 
 	Route::get('/', 'CartController@index');
 
+	Route::get('/checkout', 'CartController@checkout');
+
     Route::post('add', 'CartController@add');
 
     Route::post('remove', 'CartController@remove');

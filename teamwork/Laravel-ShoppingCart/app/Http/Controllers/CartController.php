@@ -111,4 +111,9 @@ class CartController extends Controller
             return redirect('cart');
         }
     }
+
+    public function checkout()
+    {
+        return view('shop.checkout');
+    }
 }
