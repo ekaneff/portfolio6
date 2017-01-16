@@ -7,16 +7,16 @@
 @endsection
 
 @section('content')
-	<div class="container">
+	<div class="container clearfix">
 
 		<form action="/cart/checkout" method="post">
         	<!-- <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> -->
         	{{ csrf_field() }}
         	<input type="hidden" name="total" value="{{ $total }}">
-        	<input type="submit" name="submit" value="Checkout" class="remove btn btn-default checkout">					        
+        	<input type="submit" name="submit" value="Checkout" class="remove btn btn-primary checkout pull-right">					        
         </form>
 
-		<span class="running-total">Total: ${{$total}}.00</span>
+		<p class="running-total pull-right">Total: ${{$total}}.00</p>
 
 		<h1 class="cart-head">My Cart</h1>
 		@if (count($order) > 0)
