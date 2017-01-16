@@ -57,6 +57,13 @@ class CartController extends Controller
 
                 $count++;
             }
+
+            // $total = 0;
+
+            // foreach($products as $product) {
+            //     $total += $product['attributes']['price'];
+            //     //dd($product['attributes']['price']);
+            // }
         }
         
         //I'm sending product references for images and price, along with the orders to display.
