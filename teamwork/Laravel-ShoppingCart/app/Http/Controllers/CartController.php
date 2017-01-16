@@ -47,6 +47,9 @@ class CartController extends Controller
             //Laravel arrays accept key/value pairs, count will act as a generic iterator for our 'keys'
             $count = 0;
 
+
+            $total = 0;
+
             foreach($orders as $item)
             {
                 $itemA = Products::where([['id', '=', $item->product_id]])->get();
@@ -56,10 +59,12 @@ class CartController extends Controller
                 $quantities = array_add($quantities, $count, $item['attributes']['quantity']);
 
                 $count++;
+
+                $total += $itemA[0]['attributes']['price'] * $item['attributes']['quantity'];
             }
 
-            // $total = 0;
 
+            //dd($total);
             // foreach($products as $product) {
             //     $total += $product['attributes']['price'];
             //     //dd($product['attributes']['price']);
@@ -67,7 +72,7 @@ class CartController extends Controller
         }
         
         //I'm sending product references for images and price, along with the orders to display.
-        return view('shop.cart', ['products' => $products, 'order' => $orders, 'quantities' => $quantities]);
+        return view('shop.cart', ['products' => $products, 'order' => $orders, 'quantities' => $quantities, 'total' => $total]);
     }
 
     public function add()

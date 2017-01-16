@@ -8,7 +8,8 @@
 
 @section('content')
 	<div class="container">
-		 <button class="remove btn btn-default checkout" role="button">Checkout</button>
+		<span class="running-total">Total: ${{$total}}.00</span>
+		<button class="remove btn btn-default checkout" role="button">Checkout</button>
 		<h1 class="cart-head">My Cart</h1>
 		@if (count($order) > 0)
 		<div class="row cart">
