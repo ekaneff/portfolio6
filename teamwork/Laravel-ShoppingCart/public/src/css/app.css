@@ -3,6 +3,7 @@
    ====================== */
 body {
 	color: #252323;
+	font-family: 'Taviraj', serif;
 }
 
 header {
@@ -56,18 +57,45 @@ header div a:hover {
 }
 
 .head-container {
-	background: rgba(18, 53, 91, .5);
-	margin-top: 200px;
+	/*background: rgba(18, 53, 91, .5); */
+	margin-top: 250px;
 	padding: 30px 0;
 	color: #F2F4F3;
-	border: 2px solid #F2F4F3;
+	/*border: 2px solid #F2F4F3;*/
+}
+
+.head-container p {
+	margin-bottom: 50px;
 }
 
 
 /* ======================
 		NAVIGATION
    ====================== */
-nav::after {
+
+.navbar {
+	margin-bottom: 0;
+}
+
+.navbar-default {
+	background: none;
+	border: 0;
+}
+
+.navbar-default .navbar-nav li a {
+	color: #12355B;
+}
+
+.navbar-default .navbar-brand {
+	color: #12355B;
+	font-size: 30px;
+}
+
+.navbar-default .navbar-text {
+	color: #A82931;
+}
+
+/*nav::after {
 	content: '';
 	display: block;
 	clear: both;
@@ -118,7 +146,7 @@ nav a {
 	color: #12355B;
 }
 
-
+*/
 /* ======================
 		FEATURED
    ====================== */
@@ -132,8 +160,8 @@ nav a {
 }
 
 .thumbnail img {
-	max-height: 350px;
 	max-width: 300px;
+	max-height: 350px;
 }
 
 h3 a {
@@ -240,7 +268,7 @@ footer div {
 }
 
 /* ======================
-		Confirmation
+		Checkout
    ====================== */
 
 .cart {

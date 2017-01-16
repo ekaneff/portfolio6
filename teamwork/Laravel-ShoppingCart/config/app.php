@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'The Bike Shop',
+    'name' => 'WD6-International Bikes',
 
     /*
     |--------------------------------------------------------------------------
