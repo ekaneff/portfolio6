@@ -46,7 +46,9 @@ Route::group(['prefix' => 'cart'], function () {
 
 	Route::get('/', 'CartController@index');
 
-	Route::get('/checkout', 'CartController@checkout');
+	Route::post('/checkout', 'CartController@checkout');
+
+	Route::post('/charge', 'CartController@charge');
 
     Route::post('add', 'CartController@add');
 

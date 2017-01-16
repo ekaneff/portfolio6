@@ -126,6 +126,24 @@ class CartController extends Controller
 
     public function checkout()
     {
-        return view('shop.checkout');
+        $total = Input::get('total');
+        return view('shop.checkout', ['total' => $total]);
+    }
+
+    public function charge()
+    {
+        $token = Input::get('stripeToken');
+        $total = Input::get('total');
+
+        \Stripe\Stripe::setApiKey("sk_test_UkIOZfIPW2LmcBcTYMmjDnpJ");
+
+        $charge = \Stripe\Charge::create(array(
+          "amount" => 500, //Change to $total 
+          "currency" => "usd",
+          "description" => "Example charge",
+          "source" => $token,
+        ));
+
+        dd($charge);
     }
 }

@@ -8,12 +8,16 @@
 
 @section('content')
 	<div class="container">
-<<<<<<< HEAD
-		 <button href="" class="remove btn btn-default checkout" role="button">Checkout</button>
-=======
+
+		<form action="/cart/checkout" method="post">
+        	<!-- <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> -->
+        	{{ csrf_field() }}
+        	<input type="hidden" name="total" value="{{ $total }}">
+        	<input type="submit" name="submit" value="Checkout" class="remove btn btn-default checkout">					        
+        </form>
+
 		<span class="running-total">Total: ${{$total}}.00</span>
-		<button class="remove btn btn-default checkout" role="button">Checkout</button>
->>>>>>> origin/master
+
 		<h1 class="cart-head">My Cart</h1>
 		@if (count($order) > 0)
 		<div class="row cart">
