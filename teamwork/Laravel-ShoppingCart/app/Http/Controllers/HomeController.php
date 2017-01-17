@@ -30,21 +30,32 @@ class HomeController extends Controller
         $id = Auth::id();
         $user = User::where('id', $id)->get();
         $o = $user[0]['attributes']['orderCount'];
-        $orders = Orders::where('complete', true)->get();
+        $order = Orders::where([['complete','=', true],['user_id', '=', $id]])->get();
 
         $products = array();
 
-        $count = 0;
+        $orders = array();
 
-        foreach($orders as $item)
+        $itemA = Products::all();
+
+        $pc = 0;
+
+        foreach($itemA as $item)
         {
-            $itemA = Products::where([['id', '=', $item->product_id]])->get();
-            
-            $products = array_add($products, $count, $itemA[0]['attributes']);
+            $products = array_add($products, $pc, $item['attributes']);
 
-            $count++;
+            $pc++;
         }
 
-        return view('user.orderhistory', ['products' => $products, 'orders' => $orders, 'count' => $count]);
+        $oc = 0;
+
+        foreach($order as $ord)
+        {
+            $orders = array_add($orders, $oc, $ord['attributes']);
+
+            $oc++;
+        }
+
+        return view('user.orderhistory', ['products' => $products, 'orders' => $orders, 'count' => $o]);
     }
 }

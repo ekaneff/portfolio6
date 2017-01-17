@@ -8,53 +8,34 @@
 
 <h1>Order History</h1>
 
-@for ($i = 1; $i < $count; $i++)
-	{{-- For each $count (order), create a row--}}
+@for ($i = 1; $i <= $count; $i++)
+	 
 	<div class="row cart">
-		<h2>Order #{{ $i }}</h2>
-		{{-- For each $product in order, create a card--}}
+		 <h2>Order #{{ $i }}</h2>
 		@foreach ($orders as $order)
-			@if ($order['attributes']['orderNumber'] == $i)
+			@if ($order['orderNumber'] == $i)
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						@foreach ($products as $product)
-							@if ($product['id'] == $order['attributes']['product_id'])
-						      <img src="{{ $product['imgPath'] }}" class="img-responsive" alt="...">
+						@for ($f = 0; $f < count($products); $f++)
+							@if ($products[$f]['id'] == $order['product_id'])
+						      <img src="{{ $products[$f]['imgPath'] }}" class="img-responsive" alt="...">
 						      <div class="caption">
-						        <h3><a href="#">{{ $product['name'] }}</a></h3>
+						        <h3><a href="#">{{ $products[$f]['name'] }}</a></h3>
 						        <div class="clearfix">
 						        	<div class="pull-left">
-						        		<div class="price">${{ $product['price'] }}.00</div>
-							        	<div class="quantity">Quantity: {{ $order['attributes']['quantity'] }}</div>
+						        	<div class="price">${{ $products[$f]['price'] }}.00</div>
+							        <div class="quantity">Quantity: {{ $order['quantity'] }}</div>
 							        </div>
 						        </div>
 						      </div>
 							@endif
-						@endforeach 
+						@endfor 
 					</div>
 				</div>
 			@endif
-		@endforeach
+		@endforeach  
 	</div>
 @endfor
 
 
 
-	
-
-
-
-{{-- 	<div class="col-sm-6 col-md-4">
-	    <div class="thumbnail">
-	      <img src="{{ $products[$i]['imgPath'] }}" class="img-responsive" alt="...">
-	      <div class="caption">
-	        <h3><a href="#">{{ $products[$i]['name'] }}</a></h3>
-	        <div class="clearfix">
-	        	<div class="pull-left">
-	        	<div class="price">${{ $products[$i]['price'] }}.00</div>
-		        <div class="quantity">Quantity: {{ $quantities[$i] }}</div>
-		        </div>
-	        </div>
-	      </div>
-	    </div>
-	</div> --}}
