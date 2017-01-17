@@ -285,12 +285,21 @@ footer div {
 		margin: 0;
 		font-size: 20px;
 		position: absolute;
-		bottom: -130;
+		bottom: -100;
 		left: 130;
 	}
 
 	.cart-head {
 		font-size: 20px;
+	}
+
+	.running-total {
+		text-align: left;
+		font-size: 25px;
+	}
+
+	.special {
+		display: none;
 	}
 }
 

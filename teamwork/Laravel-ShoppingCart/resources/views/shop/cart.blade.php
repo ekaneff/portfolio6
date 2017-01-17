@@ -13,7 +13,7 @@
         	<!-- <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> -->
         	{{ csrf_field() }}
         	<input type="hidden" name="total" value="{{ $total }}">
-        	<input type="submit" name="submit" value="Checkout" class="remove btn btn-primary checkout pull-right">					        
+        	<input type="submit" name="submit" value="Checkout" class="remove btn btn-primary checkout pull-right">				
         </form>
 		<p class="running-total pull-right">Total: $<span class="num">{{$total}}.00</span></p>
 
