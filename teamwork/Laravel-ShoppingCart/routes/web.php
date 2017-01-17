@@ -24,11 +24,11 @@ Route::get('/login', ['middleware' => 'guest'] ,function() {
 	return view('user.login');
 });
 
-Route::get('/cart',function() {
+Route::get('/cart', ['middleware' => 'auth'], function() {
 	return view('shop.cart');
 });
 
-Route::get('/confirm', function() {
+Route::get('/confirm', ['middleware' => 'auth'], function() {
 	return view('shop.confirmation');
 });
 
