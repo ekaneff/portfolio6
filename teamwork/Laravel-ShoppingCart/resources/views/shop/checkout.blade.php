@@ -8,23 +8,21 @@
 
 @section('content')
 
-	<form action="/cart/charge" method="POST" id="payment-form">
+	{{-- <form action="/cart/charge" method="POST" id="payment-form">
 		{{ csrf_field() }}
 	  <span class="payment-errors"></span>
 
-	  <div class="form-row">
-	  	<label>Total</label>
-	  	<input type="text" value='${{ $total }}.00' readonly>
+	  <div class="form-group">
+	  	<label for="total">Total</label>
+	  	<input id="total" type="text" value='${{ $total }}.00' readonly>
 	  </div>
 
-	  <div class="form-row">
-	    <label>
-	      <span>Card Number</span>
-	      <input class="card-number" type="text" size="20" data-stripe="number">
-	    </label>
+	  <div class="form-group">
+	    <label for="card-number">Card Number</label>
+	      <input id="class-number" class="card-number" type="text" size="20" data-stripe="number">
 	  </div>
 
-	  <div class="form-row">
+	  <div class="form-group">
 	    <label>
 	      <span>Expiration (MM/YY)</span>
 	      <input class="card-expiry-month" type="text" size="2" data-stripe="exp_month">
@@ -42,8 +40,34 @@
 
 
 	  <input type="submit" class="submit" value="Submit Payment">
-	</form>
-
+	</form> --}}
+	<div class="container">
+		<form action="/cart/charge" method="POST" id="payment-form">
+			{{ csrf_field() }}
+			<div class="alert alert-danger payment-errors" role="alert"></div>
+		  <div class="form-group">
+		    <label for="total">Total</label>
+		    <input type="text" class="form-control" id="total" value='${{ $total }}.00' readonly>
+		  </div>
+		  <div class="form-group">
+		    <label for="card-number">Card Number</label>
+		    <input type="text" class="form-control card-number" id="card-number" size="20" data-strippe="number">
+		  </div>
+		  <div class="form-group">
+		    <label for="expiration">Expiration</label>
+		    <input type="text" class="card-expiry-month" id="expiration" size="2" size="2" data-strippe="exp_month"> 
+		    <span> / </span>
+		    <input type="text" class="card-expiry-year" id="expiration" size="2" size="2" data-strippe="exp_year">
+		  </div>
+		  <div class="form-group">
+		    <label for="cvc">CVC</label>
+		    <input  id="expiration" class="card-cvc" type="text" size="4" data-stripe="cvc">
+		  </div>		 
+		  <button type="submit" class="btn btn-primary submit">Submit</button>
+		</form>
+		
+	</div>
+	
 @endsection
 
 @section('scripts')

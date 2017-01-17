@@ -24,7 +24,7 @@
 					        	<!-- <a href="" class="btn btn-default pull-right" role="button">Add to Cart</a> -->
 					        	{{ csrf_field() }}
 					        	<input type="hidden" name="item" value="{{ $product->id }}">
-					        	<input type="submit" name="submit" value="Add to Cart" class="btn btn-default pull-right">					        
+					        	<input type="submit" name="submit" value="Add to Cart" class="btn btn-primary pull-right">					        
 					        </form>
 					        <a href="" class="pull-right wishlist" role="button">Add to WishList</a>
 				        </div>
