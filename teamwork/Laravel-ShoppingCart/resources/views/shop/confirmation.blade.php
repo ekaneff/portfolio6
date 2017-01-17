@@ -9,7 +9,7 @@
 @section('content')
 	<section class="orderpage">
 		<h1>Order complete!</h1>
-		<p>Thank you for shopping with The Bike Shop! You ordered [product name]. We will send you confirmation when the order ships</p>
+		<p>Thank you for shopping with The Bike Shop! We will send you confirmation when the order ships</p>
 		<article class="order">
 			<h2>Order Confirmation</h2>
 			<h3>Estimated Delivery Date:</h3>

@@ -15,11 +15,11 @@
         	<input type="hidden" name="total" value="{{ $total }}">
         	<input type="submit" name="submit" value="Checkout" class="remove btn btn-primary checkout pull-right">					        
         </form>
-        <a href="{{ route('product.index') }}" class="btn btn-primary special" role="button">Continue Shopping</a> 
 		<p class="running-total pull-right">Total: $<span class="num">{{$total}}.00</span></p>
 
 		<h1 class="cart-head">My Cart</h1>
 		@if (count($order) > 0)
+		<a href="{{ route('product.index') }}" class="btn btn-primary special" role="button">Continue Shopping</a> 
 		<div class="row cart">
 			@for ($i = 0; $i < count($products); $i++)
 				<div class="col-sm-6 col-md-4">
@@ -48,7 +48,7 @@
 			<div class="container cart">
 				<h2>Your cart is empty!</h2>
 				<h3>It doesn't have to stay that way! Click below to keep shopping</h3>
-				<a href="{{ route('product.index') }}" class="btn btn-default" role="button">Continue Shopping</a>
+				<a href="{{ route('product.index') }}" class="btn btn-primary" role="button">Continue Shopping</a>
 			</div>
 		@endif
 	</div>
