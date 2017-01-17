@@ -51,13 +51,13 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="card-number">Card Number</label>
-		    <input type="text" class="form-control card-number" id="card-number" size="20" data-strippe="number">
+		    <input type="text" class="form-control card-number" id="card-number" size="20" data-stripe="number">
 		  </div>
 		  <div class="form-group">
 		    <label for="expiration">Expiration</label>
-		    <input type="text" class="card-expiry-month" id="expiration" size="2" size="2" data-strippe="exp_month"> 
+		    <input type="text" class="card-expiry-month" id="expiration" size="2" size="2" data-stripe="exp_month"> 
 		    <span> / </span>
-		    <input type="text" class="card-expiry-year" id="expiration" size="2" size="2" data-strippe="exp_year">
+		    <input type="text" class="card-expiry-year" id="expiration" size="2" size="2" data-stripe="exp_year">
 		  </div>
 		  <div class="form-group">
 		    <label for="cvc">CVC</label>
