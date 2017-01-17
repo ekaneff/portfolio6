@@ -17,7 +17,20 @@
 			@if ($order['attributes']['orderNumber'] == $i)
 				<div class="col-sm-6 col-md-4">
 					<div class="thumbnail">
-						
+						@foreach ($products as $product)
+							@if ($product['id'] == $order['attributes']['product_id'])
+						      <img src="{{ $product['imgPath'] }}" class="img-responsive" alt="...">
+						      <div class="caption">
+						        <h3><a href="#">{{ $product['name'] }}</a></h3>
+						        <div class="clearfix">
+						        	<div class="pull-left">
+						        		<div class="price">${{ $product['price'] }}.00</div>
+							        	<div class="quantity">Quantity: {{ $order['attributes']['quantity'] }}</div>
+							        </div>
+						        </div>
+						      </div>
+							@endif
+						@endforeach 
 					</div>
 				</div>
 			@endif
