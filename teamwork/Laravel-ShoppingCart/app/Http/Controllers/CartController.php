@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use App\Orders;
 use App\Products;
+use App\User;
 
 class CartController extends Controller
 {
@@ -85,7 +86,7 @@ class CartController extends Controller
             $itemId = Input::get('item');
 
             //Check database to see if order for this product already exists
-            $order = Orders::where([['user_id', '=', $id],['product_id', '=', $itemId]])->get();
+            $order = Orders::where([['user_id', '=', $id],['product_id', '=', $itemId],['complete', '=', false]])->get();
 
             //if product order exists, add another to quantity, because our functionality only allows user to add one product at a time
             if(count($order) > 0)
@@ -104,7 +105,7 @@ class CartController extends Controller
                 $order->save();
             }
 
-            return redirect('cart');
+            return redirect('/');
         }
     }
 
@@ -134,16 +135,38 @@ class CartController extends Controller
     {
         $token = Input::get('stripeToken');
         $total = Input::get('total');
+        $id = Auth::id();
+        $user = User::where('id', $id)->get();
+        $orderCount = $user[0]['attributes']['orderCount'];
 
         \Stripe\Stripe::setApiKey("sk_test_UkIOZfIPW2LmcBcTYMmjDnpJ");
 
-        $charge = \Stripe\Charge::create(array(
-          "amount" => 500, //Change to $total 
-          "currency" => "usd",
-          "description" => "Example charge",
-          "source" => $token,
-        ));
+        try {
+          // Use Stripe's library to make requests...
+            $charge = \Stripe\Charge::create(array(
+              "amount" => 500, //Change to $total for presentation 
+              "currency" => "usd",
+              "description" => "Example charge",
+              "source" => $token,
+            ));
 
-        dd($charge);
+        } catch(\Stripe\Error\Card $e) {
+          // Since it's a decline, \Stripe\Error\Card will be caught
+          $body = $e->getJsonBody();
+          $err  = $body['error'];
+
+          print('Status is:' . $e->getHttpStatus() . "\n");
+          print('Type is:' . $err['type'] . "\n");
+          print('Code is:' . $err['code'] . "\n");
+          // param is '' in this case
+          print('Param is:' . $err['param'] . "\n");
+          print('Message is:' . $err['message'] . "\n");
+        }
+
+        $order = Orders::where([['user_id', '=', $id],['complete', '=', false]])->update(['complete' => true, 'orderNumber' => $orderCount]);
+
+        $user = User::where('id', $id)->update(['orderCount' => $orderCount++]);
+
+        return view('shop.confirmation', ["total" => $total]);
     }
 }

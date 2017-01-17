@@ -14,7 +14,7 @@
 			<h2>Order Confirmation</h2>
 			<h3>Estimated Delivery Date:</h3>
 			<h4>Tuesday, Janurary 10th, 2017</h4>
-			<h5 class='total'>Order Total: [total here]</h5>
+			<h5 class='total'>Order Total: ${{ $total }}.00</h5>
 			<p><button class="btn btn-default">Continue Shopping</button></p>
 		</article>
 	</section>
