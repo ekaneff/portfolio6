@@ -42,12 +42,12 @@
 	  <input type="submit" class="submit" value="Submit Payment">
 	</form> --}}
 	<div class="container">
+		<h1>Payment Info</h1>
 		<form action="/cart/charge" method="POST" id="payment-form">
 			{{ csrf_field() }}
 			<div class="alert alert-danger payment-errors" role="alert"></div>
 		  <div class="form-group">
-		    <label for="total">Total</label>
-		    <input type="text" class="form-control" id="total" value='${{ $total }}.00' readonly>
+		    <input type="hidden" class="form-control" id="total" value='${{ $total }}.00' >
 		  </div>
 		  <div class="form-group">
 		    <label for="card-number">Card Number</label>
@@ -62,7 +62,8 @@
 		  <div class="form-group">
 		    <label for="cvc">CVC</label>
 		    <input  id="expiration" class="card-cvc" type="text" size="4" data-stripe="cvc">
-		  </div>		 
+		  </div>	
+		  <h2>Total: ${{$total}}.00</h2>	 
 		  <button type="submit" class="btn btn-primary submit">Submit</button>
 		</form>
 		

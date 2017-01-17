@@ -26,7 +26,6 @@
 					        	<input type="hidden" name="item" value="{{ $product->id }}">
 					        	<input type="submit" name="submit" value="Add to Cart" class="btn btn-primary pull-right">					        
 					        </form>
-					        <a href="" class="pull-right wishlist" role="button">Add to WishList</a>
 				        </div>
 				      </div>
 				    </div>

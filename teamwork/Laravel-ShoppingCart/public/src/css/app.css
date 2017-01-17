@@ -27,7 +27,6 @@ header h2 {
 }
 
 header div {
-	width: 500px;
 	float: left;
 	margin-left: 40px;
 }
@@ -49,6 +48,8 @@ header div a {
 	transition: .3s;
 }
 
+
+
 header div a:hover {
 	text-decoration: none;
 	color: #A82931;
@@ -64,10 +65,21 @@ header div a:hover {
 	/*border: 2px solid #F2F4F3;*/
 }
 
-.head-container p {
-	margin-bottom: 50px;
-}
 
+@media screen and (max-width: 368px) {
+	header div a {
+		display: block;
+	}
+
+	.head-container {
+		margin-top: 150px;
+		margin-left: 70px;
+	}
+
+	header {
+		height: 550px;
+	}
+}
 
 /* ======================
 		NAVIGATION
@@ -95,58 +107,17 @@ header div a:hover {
 	color: #A82931;
 }
 
-/*nav::after {
-	content: '';
-	display: block;
-	clear: both;
+@media screen and (max-width: 368px) {
+	.navbar-default .navbar-text {
+		display: none;
+	}
+
+	.navbar-default .navbar-brand {
+		font-size: 20px;
+	}
 }
 
-nav {
-	color: #12355B;
-	border-bottom: 2px solid #12355B;
-}
 
-nav ul {
-	width: 400px;
-	float: right;
-	list-style: none;
-	padding-left: 100px;
-	margin-bottom: 0;
-}
-
-nav ul::after {
-	content: '';
-	display: block;
-	clear: both;
-}
-
-nav .main {
-	float: left;
-	padding: 10px 20px 10px 20px;
-}
-
-.dropdown-menu {
-	width: 50px;
-}
-
-nav h1 {
-	margin: 0;
-	width: 400px;
-	float: left;
-	margin-left: 40px;
-	margin-bottom: 5px;
-}
-
-nav h1 a:hover {
-	text-decoration: none;
-
-}
-
-nav a {
-	color: #12355B;
-}
-
-*/
 /* ======================
 		FEATURED
    ====================== */
@@ -162,6 +133,12 @@ nav a {
 .thumbnail img {
 	max-width: 300px;
 	max-height: 350px;
+}
+
+@media screen and (max-width: 368px) {
+	.thumbnail img {
+		max-width: 200px;
+	}
 }
 
 h3 a {
@@ -262,11 +239,28 @@ footer div {
 	margin-top: 0;
 }
 
+@media screen and (max-width: 368px) {
+
+	.order h2 {
+		text-align: left;
+		font-size: 20px;
+	}
+}
+
 .total {
 	font-weight: bold;
 	font-size: 20px;
 }
 
+.num {
+	font-weight: bold;
+}
+/*
+.special {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}*/
 /* ======================
 		Checkout
    ====================== */
@@ -292,6 +286,20 @@ footer div {
 	margin: 10px;
 	font-size: 30px;
 	color: #12355B;
+}
+
+@media screen and (max-width: 368px) {
+	.checkout {
+		margin: 0;
+		font-size: 20px;
+		position: absolute;
+		bottom: -130;
+		left: 130;
+	}
+
+	.cart-head {
+		font-size: 20px;
+	}
 }
 
 .btn-primary {
