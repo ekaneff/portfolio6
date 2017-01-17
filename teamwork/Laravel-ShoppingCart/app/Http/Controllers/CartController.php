@@ -163,9 +163,9 @@ class CartController extends Controller
           print('Message is:' . $err['message'] . "\n");
         }
 
-        $order = Orders::where([['user_id', '=', $id],['complete', '=', false]])->update(['complete' => true, 'orderNumber' => $orderCount]);
+        User::where('id', $id)->update(['orderCount' => $orderCount + 1]);
 
-        $user = User::where('id', $id)->update(['orderCount' => $orderCount++]);
+        Orders::where([['user_id', '=', $id],['complete', '=', false]])->update(['complete' => true, 'orderNumber' => $orderCount]);
 
         return view('shop.confirmation', ["total" => $total]);
     }

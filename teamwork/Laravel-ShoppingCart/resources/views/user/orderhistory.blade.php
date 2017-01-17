@@ -8,9 +8,8 @@
 
 <h1>Order History</h1>
 
-@for ($i = 1; $i <= $count; $i++)
-	 
-	<div class="row cart">
+@for ($i = 1; $i < $count; $i++)
+	 <div class="row cart">
 		 <h2>Order #{{ $i }}</h2>
 		@foreach ($orders as $order)
 			@if ($order['orderNumber'] == $i)
