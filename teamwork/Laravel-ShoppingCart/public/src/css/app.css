@@ -252,12 +252,7 @@ footer div {
 .num {
 	font-weight: bold;
 }
-/*
-.special {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}*/
+
 /* ======================
 		Checkout
    ====================== */
@@ -331,9 +326,13 @@ label {
 	font-size: 16px;
 }
 
+/* ======================
+		Order History
+   ====================== */
 
-
-
+.order-history h1 {
+	color: #12355B;
+}
 
 
 
