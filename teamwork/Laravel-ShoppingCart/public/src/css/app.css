@@ -168,6 +168,13 @@ h3 a:hover {
 	border-bottom: 3px solid #12355B;
 }
 
+@media screen and (max-width: 368px) {
+	#featured h1 {
+		font-size: 30px;
+		text-align: center;
+	}
+}
+
 .wishlist {
 	margin-right: 5px;
 	padding: 5px 12px;

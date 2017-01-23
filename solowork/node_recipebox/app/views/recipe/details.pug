@@ -1,0 +1,15 @@
+extends ../layouts/master
+
+block content
+	div.container
+		a.btn.btn-warning(href='/user/profile') Back to list
+
+		h1= recipe.title
+		h2 Rating: #{recipe.rating}/5
+		p= recipe.description
+
+		h3 Ingredients
+		ul
+			each ingredient in recipe.ingredients
+				li= ingredient
+

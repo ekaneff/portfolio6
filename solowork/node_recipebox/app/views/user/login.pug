@@ -1,0 +1,13 @@
+extends ../layouts/master
+
+block content
+	h1 Log in
+	div.container
+		form(action='/user/login' method='post')
+			div.form-group
+				label(for='username') Username
+				input.form-control(type='text', id='username', name='username', placeholder='Username')
+			div.form-group
+				label(for='password') Password
+				input.form-control(type='password', id='password', name='password', placeholder='Password')
+			button.btn.btn-success(type='submit') Submit
