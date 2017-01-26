@@ -34,7 +34,7 @@ module.exports = function(app) {
 router.get('/create', function(req, res, next) {
 	if(req.session.login){
 		//console.log(req.session.userId);
-		res.render('recipe/create', {userId: req.session.userId});
+		res.render('recipe/create', {userId: req.session.userId, name: req.session.name});
 	} else {
 		res.redirect('/');
 	}
@@ -87,7 +87,7 @@ router.get('/edit/:id', function(req, res, next) {
 			var ingrs = recipe[0].ingredients.toString();
 			//console.log(ingrs);
 			var ingrsString = ingrs.replace(/,/g, '\n');
-			res.render('recipe/edit', {recipe: recipe[0], ingrs: ingrsString, login: req.session.login, userId: req.session.userId});
+			res.render('recipe/edit', {recipe: recipe[0], ingrs: ingrsString, login: req.session.login, userId: req.session.userId, name: req.session.name});
 		});
 	} else {
 		res.redirect('/');

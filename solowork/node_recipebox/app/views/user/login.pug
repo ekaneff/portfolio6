@@ -15,7 +15,7 @@ block content
 					div.form-group
 						label(for='password') Password
 						input.form-control(type='password', id='password', name='password', placeholder='Password')
-					button.btn.btn-success(type='submit') Submit 
+					button.btn.btn-success.loginbtn(type='submit') Submit 
 				else 
 					if errors
 						each val,index in errors
@@ -26,5 +26,5 @@ block content
 					div.form-group
 						label(for='password') Password
 						input.form-control(type='password', id='password', name='password', placeholder='Password')
-					button.btn.btn-success(type='submit') Submit
+					button.btn.btn-success.loginbtn(type='submit') Submit
 					a(href='/user/guest') Continue as guest

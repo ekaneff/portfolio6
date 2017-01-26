@@ -60,7 +60,7 @@ router.get('/view', function(req, res, next) {
 						ratings.push(spans);
 					});
 			//res.render('index', {'login': req.session.login, name: req.session.name, recipes: recipes, ratings: ratings});
-			res.render('saved/saved', {recipes: recipes, ratings: ratings, login: req.session.login, guest: req.session.guest});
+			res.render('saved/saved', {recipes: recipes, ratings: ratings, login: req.session.login, guest: req.session.guest, name: req.session.name});
 		});
 	} else {
 		res.redirect('/user/login');

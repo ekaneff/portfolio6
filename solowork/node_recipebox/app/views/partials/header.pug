@@ -5,7 +5,11 @@ nav.navbar.navbar-default
 				span.icon-bar
 				span.icon-bar
 				span.icon-bar
-			a(class='navbar-brand', href='/') Recipe Box
+			if login
+				a(class='navbar-brand', href='/') RecipeBox
+				p.navbar-text Welcome, #{name}
+			else
+				a(class='navbar-brand', href='/') RecipeBox
 		div.collapse.navbar-collapse(id='bs-example-navbar-collapse-1')
 			ul.nav.navbar-nav.navbar-right
 				if login 

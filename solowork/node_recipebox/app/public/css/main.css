@@ -1,3 +1,7 @@
+body {
+	font-family: 'Raleway', sans-serif;
+}
+
 .navbar {
 	margin: 0;
 }
@@ -31,22 +35,13 @@
 	color: white;
 }
 
+#home h1 {
+	font-size: 40px;
+}
+
 .second-nav {
 	margin: 20px 0;
 }
-
-footer {
-	background: #969A97;
-	padding: 40px;
-}
-
-footer h1 {
-	margin: 0;
-	font-size: 20px;
-	text-align: center;
-	color: white;
-}
-
 
 /* LOGIN PAGE */
 
@@ -76,7 +71,9 @@ footer h1 {
 	border-radius: 5px;
 }
 
-
+.loginbtn {
+	margin-right: 10px;
+}
 
 /* profile */
 
