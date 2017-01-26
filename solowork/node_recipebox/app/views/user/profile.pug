@@ -1,15 +1,24 @@
 extends ../layouts/master
 
 block content 
-	h1 My Recipes
+	div.page-header(id='profile')
+		div.container
+			h1 My Recipes
 	div.container
 		a.btn.btn-success(href='/create') New Recipe 
-
-		each recipe in recipes
-			div.recipe
-				h2
-					a(href='/recipe/' + recipe._id)= recipe.title
-				p= recipe.description
-
-				a.btn.btn-success(href='/edit/' + recipe._id) Edit 
-				a.btn.btn-danger(href='/delete/' + recipe._id) Delete
+		div.recipes
+			div.row
+				-for(var i = 0; i < recipes.length; i++ )
+					div.col-sm-6.col-md-4
+						div.thumbnail
+							img.img-responsive(src=recipes[i].smImgSrc)
+							div.caption
+								h2= recipes[i].title
+								p!= ratings[i]
+								p.desc= recipes[i].description
+								h3 Ingredients
+								ul
+									each ingredient in recipes[i].ingredients
+										li= ingredient
+								a.btn.btn-success.cardbtns(href='/edit/' + recipes[i]._id) Edit 
+								a.btn.btn-danger.cardbtns(href='/delete/' + recipes[i]._id) Delete

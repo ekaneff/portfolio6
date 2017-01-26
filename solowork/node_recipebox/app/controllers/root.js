@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 //put models here
 var Recipe = mongoose.model('Recipe');
 var User = mongoose.model('User');
+var Saves = mongoose.model('Saves');
 
 //functions
 module.exports = function(app) {
@@ -15,7 +16,17 @@ module.exports = function(app) {
 	app.set('views', './app/views');
 
 	app.get('/', function(req, res, next) {
-		res.render('index', {'login': req.session.login, name: req.session.name});
+		Recipe.find({ownerId: '0'}, function(err, recipes) {
+			var ratings = [];
+			recipes.forEach(function(recipe) {
+				var spans ='';
+				for (var i = 0; i < recipe.rating; i++) {
+					spans += '<span class="glyphicon glyphicon-star">';
+				}
+				ratings.push(spans);
+			});
+			res.render('index', {'login': req.session.login, name: req.session.name, recipes: recipes, ratings: ratings});
+		});
 	});
 }
 
@@ -57,14 +68,16 @@ router.post('/save', function(req, res, next) {
 
 //show recipe details page
 router.get('/recipe/:id', function(req, res, next) {
-	if(req.session.login) {
-		Recipe.find({_id: req.params.id}, function(err, recipe) {
-			res.render('recipe/details', {recipe: recipe[0], login: req.session.login, name: req.session.name});
-		});
-	} else {
-		res.redirect('/');
-	}
-	
+	Recipe.find({_id: req.params.id}, function(err, recipe) {
+		var rating = [];
+		var spans = '';
+		for (var i = 0; i < recipe[0].rating; i++) {
+			spans += '<span class="glyphicon glyphicon-star">';
+		}
+		rating.push(spans);
+		//console.log(recipe[0]);
+		res.render('recipe/details', {recipe: recipe[0], login: req.session.login, name: req.session.name, rating: rating});
+	});
 });
 
 //show edit form

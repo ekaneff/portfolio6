@@ -8,14 +8,19 @@ nav.navbar.navbar-default
 			a(class='navbar-brand', href='/') Recipe Box
 		div.collapse.navbar-collapse(id='bs-example-navbar-collapse-1')
 			ul.nav.navbar-nav.navbar-right
-				if login
+				if login 
 					li
 						a(href='/user/profile') My Recipes
 					li
+						a(href='/save/view') Saved
+					li
 						a(href='/user/logout') Logout
+					
 				else
 					li
 						a(href="/user/login") Log in
 					li
 						a(href="/user/register") Register
+					li
+						a(href='/save/view') Saved
 

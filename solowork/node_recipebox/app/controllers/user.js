@@ -18,49 +18,90 @@ router.get('/register', function(req, res, next) {
 });
 
 router.post('/register', function(req, res, next) {
-	var user = new User({
-		name: req.body.name,
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password
-	});
 
-	user.validate(function(err) {
-		console.log(err);
-	});
+	req.checkBody('username', 'You must enter a username').notEmpty();
+	req.checkBody('password', 'You must enter a password').notEmpty();
 
-	console.log(user);
+	var errors = req.validationErrors();
 
-	user.save(function(err, newUser) {
-		req.session.name = user.name;
-		req.session.login = true;
-		req.session.userId = newUser._id;
-		res.redirect('/user/profile');
-	});
+	if (errors) {
+		res.render('user/register', {errors: errors});
+	} else {
+
+		var user = new User({
+			name: req.body.name,
+			username: req.body.username,
+			email: req.body.email,
+			password: req.body.password
+		});
+
+		user.save(function(err, newUser) {
+			req.session.name = user.name;
+			req.session.login = true;
+			req.session.userId = newUser._id;
+			res.redirect('/user/profile');
+		});
+	}
+
+});
+
+//guest access 
+router.get('/guest', function( req, res, next) {
+	var guestIdInc = 0;
+	req.session.guest = true;
+	req.session.guestId += guestIdInc;
+	res.redirect('/');
 });
 
 //user login
 router.get('/login', function(req, res, next) {
-	res.render('user/login', {'login': req.session.login});
+	if (req.session.guest) {
+		res.render('user/login', {'guest': req.session.guest});
+	} else {
+		res.render('user/login');
+	}
+	
 });
 
 router.post('/login', function(req, res, next) {
-	User.find({username: req.body.username}, function(err, user) {
-		//console.log(user);
-		req.session.name = user[0].name;
-		req.session.login = true;
-		req.session.userId = user[0]._id;
-		res.redirect('/user/profile');
-	});
+
+	req.checkBody('username', 'You must enter a username').notEmpty();
+	req.checkBody('password', 'You must enter a password').notEmpty();
+
+	var errors = req.validationErrors();
+
+	if(errors) {
+		res.render('user/login', {errors: errors});
+	} else {
+		if (req.session.guest) {
+			req.session.guest = false;
+		}
+
+		User.find({username: req.body.username}, function(err, user) {
+			//console.log(user);
+			req.session.name = user[0].name;
+			req.session.login = true;
+			req.session.userId = user[0]._id;
+			res.redirect('/user/profile');
+		});
+	}
+
 });
 
 //user profile
 router.get('/profile', function(req, res, next) {
-	//console.log(req.session.login);
+	//console.log(req.session.guest);
 	if(req.session.login) {
 		Recipe.find({ownerId: req.session.userId}, function(err, recipes) {
-			console.log(recipes);
-			res.render('user/profile', {name: req.session.name, login: req.session.login, userId: req.session.userId, recipes: recipes});
+			var ratings = [];
+			recipes.forEach(function(recipe) {
+				var spans ='';
+				for (var i = 0; i < recipe.rating; i++) {
+					spans += '<span class="glyphicon glyphicon-star">';
+				}
+				ratings.push(spans);
+			});
+			res.render('user/profile', {name: req.session.name, login: req.session.login, userId: req.session.userId, recipes: recipes, ratings: ratings});
 		});
 	} else {
 		res.redirect('/');
